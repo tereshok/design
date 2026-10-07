@@ -400,32 +400,42 @@ Card (V · Fill × Hug · padding space-32 · gap space-16
 ### 2.4 Section Header: `SectionHeader`
 
 ```
-SectionHeader (V · Fill (max 720) × Hug · gap space-24)
-├── Badge/Eyebrow   (H · Hug × 32 · padding [space-4, space-12] · gap space-8 · radius-full
-│                    1px border inside · Dot 8×8 primary + body-sm/700 label)
-├── Title           h1 · text-primary · Fill · wraps
-└── Subtitle        body-lg · text-secondary · Fill · wraps  (optional, ≤ 2 lines)
+SectionHeader (V · Fill × Hug · gap space-32)
+├── SectionEyebrow  (H · Fill × Hug · gap space-4 · align center · padding [0,0,space-32,0]
+│   │                stroke-bottom 1px border, inside)
+│   ├── Dot Box     16×16 · center/center
+│   │   └── Dot     4×4 ellipse · text-primary
+│   └── Label       body-sm / 700 · text-primary
+└── Title Group     (V · Fill (max 720) × Hug · gap space-24)
+    ├── Title       h1 · text-primary · Fill · wraps
+    └── Subtitle    body-lg · text-secondary · Fill · wraps  (optional, ≤ 2 lines)
 ```
+
+**`SectionEyebrow` is the only allowed section label.** It spans the full container width, and its bottom rule sits on the container edges. Don't use the pill `Badge/Eyebrow` to open a section. Pills are only for inline labels inside cards and lists.
 
 **Layout variants**
 
 | Variant | Arrangement |
 |---|---|
 | `Stacked` (default) | Left-aligned, max width 720 |
-| `Split` | H · Fill · `justify: space-between` · `align: end`. Left: Badge + Title (max 720). Right: Subtitle or `Button/Outline` (Hug). |
+| `Split` | Eyebrow on top (full width). Below it: H · Fill · `justify: space-between` · `align: end`. Left: Title (max 720). Right: Subtitle or `Button/Outline` (Hug). |
+| `Offset` | Eyebrow and Title span the full width. Below them, a description row (H · gap `space-24`): an empty **4/12-column offset** (440px at 1440) and an **8/12-column** content column (V · gap `space-32`). The content column holds a body-lg lead (max 720), an optional body-md `text-secondary` paragraph, and a `Button/Primary/md` CTA. On tablet and mobile the offset column is removed. |
 | `Centered` | Same as Stacked with `align: center` and centered text. Hero and closing CTA only. |
 
 **Rules**
 
 - The gap from the header to the section content is always `space-48` (desktop) or `space-32` (mobile).
 - Use one H1 per section. Sub-blocks inside a section use `h2` or `h3`.
+- Build the left indent as a grid offset column. Never use `padding-left` spacers (legacy `463px`).
+- A CTA in a section intro is `Button/Primary`. Use `Outline` only when a Primary button is already visible in the same viewport.
 
 ### 2.5 Supporting atoms & molecules
 
 | Component | Blueprint |
 |---|---|
 | `Tag/{Filled, Outline, Inverse, Selected}` | H · Hug × 40 · padding [`space-8`, `space-16`] · gap `space-8` · `radius-full` · optional 16px leading icon · body-sm/700. Fill: Filled `surface`, Outline 1px `border`, Inverse `inverse-bg`, Selected `primary`. |
-| `Badge/{Eyebrow, Success, Warning, Error}` | H · Hug × 32 · padding [`space-4`, `space-12`] · gap `space-8` · `radius-full` · 8px status dot · body-sm/700. State badges use `surface` fill with a colored dot. Never fill a badge with the state color. |
+| `SectionEyebrow` | See §2.4. Full-width section label: 4px `text-primary` dot in a 16px box, body-sm/700, 1px bottom `border`, bottom padding `space-32`. |
+| `Badge/{Eyebrow, Success, Warning, Error}` | H · Hug × 32 · padding [`space-4`, `space-12`] · gap `space-8` · `radius-full` · 8px status dot · body-sm/700. Inline use only (cards, lists, metadata), never as a section label. State badges use `surface` fill with a colored dot. Never fill a badge with the state color. |
 | `IconWrapper/{Inverse, Primary, Outline, Surface}/{24,40,48}` | Circle, `radius-full`, Hug. Padding 4 / 8 / 12 around an icon of 16 / 24 / 24. |
 | `Accordion/{Closed, Open}` | V · Fill · padding [`space-24`, 0] · gap `space-16` · bottom stroke 1px `border`. Header: H · gap `space-24` · align center; contains index (body-sm/700, `text-tertiary`), title (body-lg, Fill) and a toggle (36px circle: Outline + `plus` when closed, Primary + `minus` when open). Body: body-md, `text-secondary`, indented to align with the title. |
 | `ListItem/{Bullet, Check}` | H · Fill · gap `space-12` · align start. Marker: an 8px `primary` dot centered in a 24px-tall wrapper, or `IconWrapper/Primary/24` with a `check` icon. Text: body-md, Fill. List gap `space-12`. |
@@ -538,3 +548,4 @@ Type scales down according to §1.4 (responsive type). Spacing tokens never scal
 | Version | Date | Change |
 |---|---|---|
 | 1.0 | 2026-10-01 | Initial system. Added `h4` (24/32/700) for card and team titles. Added `space-40`. Legacy 40px → 40, 50px → 48. Radius scale re-indexed so `radius-lg` = 12px (cards, inputs; Tailwind `rounded-xl`). Adopted `success` `#12A150`. |
+| 1.1 | 2026-10-01 | Added the `SectionEyebrow` master (full-width rule) as the standard section label; `Badge/Eyebrow` is now inline-only. Section header gap is `space-32`. Added the `Offset` section-header variant (4/12 offset + 8/12 content). Intro CTAs use `Button/Primary`. |
