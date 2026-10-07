@@ -1,7 +1,7 @@
 # Devox Design System — `design.md`
 
-**Version:** 1.0 (approved 2026-10-01)
-**Source of truth:** `devox.pen` → frame **Design System / Style Guide** (`fTW87`)
+**Version:** 1.2
+**Source of truth:** `devox.pen` → frame **Design System / Style Guide** (`cHYZv`, zone 05, right of Sections). Tokens are canvas variables (`color-*`, `space-*`, `radius-*`, `font-*`, base palette); components are reusable masters named `Component/Variant/Size`.
 **Scope:** All marketing and product pages: desktop (1440) and mobile (393) layouts.
 
 This file sets the rules for the design system. Any value not listed here is a bug. If a design needs a value that isn't here, add it as a token here first, then use it.
@@ -90,6 +90,7 @@ Use gradients only for these two purposes. Don't put a gradient on a button, on 
 - TT Interfaces is a commercial font. Self-host it with `@font-face` (weights 400, 500, 700; `font-display: swap`).
 - There is one family. No serif, no monospace, no secondary display face.
 - The allowed weights are **400 Regular**, **500 Medium** and **700 Bold**. Don't use 300, 600 or 800.
+- On the canvas the weights are the font files `TTInterfacesRegular`, `TTInterfacesMedium` and `TTInterfacesDemiBold` (the 700 slot), exposed as the variables `font-regular`, `font-medium` and `font-bold`. The existing pages still carry numeric weights 600 and 900 on some text; migrate them to the nearest allowed weight.
 
 **Type scale (desktop)**
 
@@ -548,4 +549,5 @@ Type scales down according to §1.4 (responsive type). Spacing tokens never scal
 | Version | Date | Change |
 |---|---|---|
 | 1.0 | 2026-10-01 | Initial system. Added `h4` (24/32/700) for card and team titles. Added `space-40`. Legacy 40px → 40, 50px → 48. Radius scale re-indexed so `radius-lg` = 12px (cards, inputs; Tailwind `rounded-xl`). Adopted `success` `#12A150`. |
+| 1.2 | 2026-10-07 | Built the Style Guide frame in `devox.pen` (zone 05): colour variables with light/dark themes, type scale, spacing, radii, borders and reusable masters for Button, IconWrapper, Tag, Badge, SectionEyebrow, Input, Card, SectionHeader, Accordion and ListItem. Audit of the real pages found off-token values to migrate: greys `#71717A` / `#E4E4E7` (use `text-secondary` / `surface`), `#222224` (→ `ink-900`), radii 9.71, 27.2, 28 and 50, spacing 5 / 10 / 15 / 30 / 35 / 90, font sizes 9, 17, 18, 19, 22, 23, 29, 44, 62, 78, and breakpoint widths 1580–1590 / 800–810 / 370–380 instead of 1440 / 768 / 393. First migration pass on the 36 real page frames (zone 01): legacy hex values snapped to token values (`#222224` → `#232326`, `#71717A` → `#717578`, `#E4E4E7` → `#D9DADA`, `#F0F0F0` / `#F1F1F1` → `#F4F5F5`, `#000` → `#0F0F10`, `#404040` → `#37383A`, `#FFF` → `#FFFFFF`), brand purple bound to the `color-primary` variable, radii snapped to the scale (10 / 9.71 → 12, 27–30 → 32, ≤ 100px pills → full), fractional strokes set to 1px and shadows neutralised. Spacing, font sizes, weights and frame widths are not migrated yet because they reflow the layout. |
 | 1.1 | 2026-10-01 | Added the `SectionEyebrow` master (full-width rule) as the standard section label; `Badge/Eyebrow` is now inline-only. Section header gap is `space-32`. Added the `Offset` section-header variant (4/12 offset + 8/12 content). Intro CTAs use `Button/Primary`. |
