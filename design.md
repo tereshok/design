@@ -1,6 +1,6 @@
 # Devox Design System — `design.md`
 
-**Version:** 1.2
+**Version:** 1.3
 **Source of truth:** `devox.pen` → frame **Design System / Style Guide** (`cHYZv`, zone 05, right of Sections). Tokens are canvas variables (`color-*`, `space-*`, `radius-*`, `font-*`, base palette); components are reusable masters named `Component/Variant/Size`.
 **Scope:** All marketing and product pages: desktop (1440) and mobile (393) layouts.
 
@@ -150,14 +150,14 @@ Use gradients only for these two purposes. Don't put a gradient on a button, on 
 
 ### 1.6 Radii
 
-| Token | Value | Tailwind | Usage |
-|---|---|---|---|
-| `--radius-sm` | 4px | `rounded` | Icon glyph boxes, small chips, color swatches |
-| `--radius-md` | 8px | `rounded-lg` | Tooltips, small controls, dropdown items |
-| `--radius-lg` | **12px** | `rounded-xl` | **Cards, inputs, tables, image thumbnails** |
-| `--radius-xl` | 20px | `rounded-[20px]` | Large panels, dark CTA / form blocks |
-| `--radius-2xl` | 32px | `rounded-[32px]` | Hero media, oversized tiles |
-| `--radius-full` | 9999px | `rounded-full` | Buttons, tags, badges, avatars, icon wrappers |
+| Token | Value | Usage |
+|---|---|---|
+| `--radius-sm` | 4px | Icon glyph boxes, small chips, color swatches |
+| `--radius-md` | 8px | Tooltips, small controls, dropdown items |
+| `--radius-lg` | **12px** | **Cards, inputs, tables, image thumbnails** |
+| `--radius-xl` | 20px | Large panels, dark CTA / form blocks |
+| `--radius-2xl` | 32px | Hero media, oversized tiles |
+| `--radius-full` | 9999px | Buttons, tags, badges, avatars, icon wrappers |
 
 **Legacy mapping:** 2, 4 → `sm` · 6 → `md` · 10 → `lg` · 20 → `xl` · 28, 30 → `2xl` · 80, 100, 1024 → `full`.
 
@@ -169,106 +169,21 @@ Use gradients only for these two purposes. Don't put a gradient on a button, on 
 
 ### 1.8 Implementation reference
 
-```css
-:root,
-[data-theme="light"] {
-  --color-primary: #9118DB;
-  --color-primary-hover: #A83DEA;
-  --color-primary-pressed: #580E85;
-  --color-on-primary: #FFFFFF;
-  --color-link: #9118DB;
+This document is framework-neutral. Its tokens are implemented as CSS custom properties in [`tokens.css`](tokens.css), which is the single implementation source for all stacks (React, Vue, Svelte, Angular, plain HTML, SCSS, CSS Modules, CSS-in-JS).
 
-  --color-bg: #FFFFFF;
-  --color-surface: #F4F5F5;
-  --color-surface-warm: #FAF4EE;
-  --color-inverse-bg: #0F0F10;
-  --color-inverse-text: #FFFFFF;
-  --color-overlay: rgba(15, 15, 16, 0.5);
+- **Naming:** a token in this file maps 1:1 to a CSS variable of the same name (`--color-primary`, `--space-16`, `--radius-lg`). Type tokens follow `--text-{token}-{size|line|weight|tracking}` (for example `--text-h2-size`).
+- **Themes:** `tokens.css` defines light values on `:root` / `[data-theme="light"]` and dark overrides on `[data-theme="dark"]`. Components never branch on theme.
+- **Responsive type:** the mobile type scale from §1.4 is applied inside `tokens.css` with a `max-width: 767px` media query, so components need no breakpoint logic for type.
+- **Other platforms** (React Native, Flutter): export the same values from this file. CSS variables and `data-theme` do not exist there.
 
-  --color-text-primary: #0F0F10;
-  --color-text-secondary: #717578;
-  --color-text-tertiary: #A0A3A5;
+**Optional adapters** (not part of the design system, use only if the project uses the tool):
 
-  --color-border: #BBBDBE;
-  --color-border-subtle: rgba(15, 15, 16, 0.2);
+| Tool | File | Notes |
+|---|---|---|
+| Tailwind v4 | [`integrations/tailwind-v4.css`](integrations/tailwind-v4.css) | Maps tokens through `@theme inline`. Utility keys equal the token value (`p-8` = 8px = `--space-8`). |
+| Tailwind v3 | [`integrations/tailwind-v3.config.js`](integrations/tailwind-v3.config.js) | Same key convention. |
 
-  --color-success: #12A150;
-  --color-warning: #E7BC00;
-  --color-error: #EA2E29;
-  --color-info: #1E5CF1;
-
-  --gradient-brand: linear-gradient(90deg, #E51263 0%, #A83DEA 50%, #32CEFF 100%);
-  --gradient-soft: linear-gradient(90deg, #FBD3E3 0%, #EAD1FA 50%, #9EE8FF 100%);
-
-  --font-sans: "TT Interfaces", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  --space-4: 4px;  --space-8: 8px;   --space-12: 12px; --space-16: 16px; --space-24: 24px;
-  --space-32: 32px; --space-40: 40px; --space-48: 48px; --space-64: 64px; --space-80: 80px;
-
-  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
-  --radius-xl: 20px; --radius-2xl: 32px; --radius-full: 9999px;
-}
-
-[data-theme="dark"] {
-  --color-link: #A83DEA;
-  --color-bg: #0F0F10;
-  --color-surface: #232326;
-  --color-surface-warm: #232326;
-  --color-inverse-bg: #FFFFFF;
-  --color-inverse-text: #0F0F10;
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #A0A3A5;
-  --color-text-tertiary: #717578;
-  --color-border: #37383A;
-  --color-border-subtle: rgba(255, 255, 255, 0.1);
-}
-```
-
-```js
-// tailwind.config.js (theme excerpt)
-module.exports = {
-  theme: {
-    fontFamily: {
-      sans: ['"TT Interfaces"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
-    },
-    spacing: {
-      0: '0', 1: '4px', 2: '8px', 3: '12px', 4: '16px', 6: '24px',
-      8: '32px', 10: '40px', 12: '48px', 16: '64px', 20: '80px',
-    },
-    borderRadius: {
-      none: '0', DEFAULT: '4px', lg: '8px', xl: '12px',
-      '2xl': '20px', '3xl': '32px', full: '9999px',
-    },
-    fontSize: {
-      display: ['80px', { lineHeight: '88px', letterSpacing: '-2px', fontWeight: '500' }],
-      h1: ['64px', { lineHeight: '72px', letterSpacing: '-2px', fontWeight: '500' }],
-      h2: ['40px', { lineHeight: '48px', letterSpacing: '-1px', fontWeight: '500' }],
-      h3: ['32px', { lineHeight: '40px', fontWeight: '500' }],
-      h4: ['24px', { lineHeight: '32px', fontWeight: '700' }],
-      'body-lg': ['20px', { lineHeight: '28px', fontWeight: '500' }],
-      'body-md': ['16px', { lineHeight: '24px' }],
-      'body-sm': ['14px', { lineHeight: '20px' }],
-      caption: ['12px', { lineHeight: '16px', fontWeight: '500' }],
-    },
-    colors: {
-      transparent: 'transparent',
-      primary: { DEFAULT: 'var(--color-primary)', hover: 'var(--color-primary-hover)', pressed: 'var(--color-primary-pressed)' },
-      'on-primary': 'var(--color-on-primary)',
-      link: 'var(--color-link)',
-      bg: 'var(--color-bg)',
-      surface: { DEFAULT: 'var(--color-surface)', warm: 'var(--color-surface-warm)' },
-      inverse: { bg: 'var(--color-inverse-bg)', text: 'var(--color-inverse-text)' },
-      overlay: 'var(--color-overlay)',
-      text: { primary: 'var(--color-text-primary)', secondary: 'var(--color-text-secondary)', tertiary: 'var(--color-text-tertiary)' },
-      border: { DEFAULT: 'var(--color-border)', subtle: 'var(--color-border-subtle)' },
-      success: 'var(--color-success)', warning: 'var(--color-warning)',
-      error: 'var(--color-error)', info: 'var(--color-info)',
-    },
-  },
-};
-```
-
-The spacing, radius, font-size and color scales above **replace** Tailwind's defaults rather than extending them. That way, an off-scale utility such as `p-5` or `text-[#333]` fails visibly in review.
+Both adapters **replace** the tool's default scales rather than extending them, so an off-scale utility such as `p-5` or `text-[#333]` fails visibly in review. If a third-party UI library depends on default utilities, extend instead of replacing for that project and record the exception in the changelog.
 
 ---
 
@@ -548,6 +463,7 @@ Type scales down according to §1.4 (responsive type). Spacing tokens never scal
 
 | Version | Date | Change |
 |---|---|---|
-| 1.0 | 2026-10-01 | Initial system. Added `h4` (24/32/700) for card and team titles. Added `space-40`. Legacy 40px → 40, 50px → 48. Radius scale re-indexed so `radius-lg` = 12px (cards, inputs; Tailwind `rounded-xl`). Adopted `success` `#12A150`. |
+| 1.0 | 2026-10-01 | Initial system. Added `h4` (24/32/700) for card and team titles. Added `space-40`. Legacy 40px → 40, 50px → 48. Radius scale re-indexed so `radius-lg` = 12px (cards, inputs). Adopted `success` `#12A150`. |
+| 1.3 | 2026-10-08 | Made the document framework-neutral. Removed the Tailwind config and the Tailwind column from §1.6. Added 	okens.css as the single implementation source and optional Tailwind v3 / v4 adapters in integrations/. Tailwind adapter spacing keys now equal the pixel value (p-8 = 8px) instead of an index. |
 | 1.2 | 2026-10-07 | Built the Style Guide frame in `devox.pen` (zone 05): colour variables with light/dark themes, type scale, spacing, radii, borders and reusable masters for Button, IconWrapper, Tag, Badge, SectionEyebrow, Input, Card, SectionHeader, Accordion and ListItem. Audit of the real pages found off-token values to migrate: greys `#71717A` / `#E4E4E7` (use `text-secondary` / `surface`), `#222224` (→ `ink-900`), radii 9.71, 27.2, 28 and 50, spacing 5 / 10 / 15 / 30 / 35 / 90, font sizes 9, 17, 18, 19, 22, 23, 29, 44, 62, 78, and breakpoint widths 1580–1590 / 800–810 / 370–380 instead of 1440 / 768 / 393. First migration pass on the 36 real page frames (zone 01): legacy hex values snapped to token values (`#222224` → `#232326`, `#71717A` → `#717578`, `#E4E4E7` → `#D9DADA`, `#F0F0F0` / `#F1F1F1` → `#F4F5F5`, `#000` → `#0F0F10`, `#404040` → `#37383A`, `#FFF` → `#FFFFFF`), brand purple bound to the `color-primary` variable, radii snapped to the scale (10 / 9.71 → 12, 27–30 → 32, ≤ 100px pills → full), fractional strokes set to 1px and shadows neutralised. Spacing, font sizes, weights and frame widths are not migrated yet because they reflow the layout. |
 | 1.1 | 2026-10-01 | Added the `SectionEyebrow` master (full-width rule) as the standard section label; `Badge/Eyebrow` is now inline-only. Section header gap is `space-32`. Added the `Offset` section-header variant (4/12 offset + 8/12 content). Intro CTAs use `Button/Primary`. |

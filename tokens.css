@@ -1,0 +1,97 @@
+/*
+ * Devox Design System — tokens.css (v1.3)
+ * Framework-neutral source of truth for implementation. Mirrors design.md §1.
+ * Import once at the app root. Components read only semantic tokens (--color-*).
+ */
+
+@font-face { font-family: "TT Interfaces"; font-weight: 400; font-display: swap; src: url("/fonts/TTInterfaces-Regular.woff2") format("woff2"); }
+@font-face { font-family: "TT Interfaces"; font-weight: 500; font-display: swap; src: url("/fonts/TTInterfaces-Medium.woff2") format("woff2"); }
+@font-face { font-family: "TT Interfaces"; font-weight: 700; font-display: swap; src: url("/fonts/TTInterfaces-DemiBold.woff2") format("woff2"); }
+
+:root,
+[data-theme="light"] {
+  /* Color: semantic */
+  --color-primary: #9118DB;
+  --color-primary-hover: #A83DEA;
+  --color-primary-pressed: #580E85;
+  --color-on-primary: #FFFFFF;
+  --color-link: #9118DB;
+
+  --color-bg: #FFFFFF;
+  --color-surface: #F4F5F5;
+  --color-surface-warm: #FAF4EE;
+  --color-inverse-bg: #0F0F10;
+  --color-inverse-text: #FFFFFF;
+  --color-overlay: rgba(15, 15, 16, 0.5);
+
+  --color-text-primary: #0F0F10;
+  --color-text-secondary: #717578;
+  --color-text-tertiary: #A0A3A5;
+
+  --color-border: #BBBDBE;
+  --color-border-subtle: rgba(15, 15, 16, 0.2);
+
+  --color-success: #12A150;
+  --color-warning: #E7BC00;
+  --color-error: #EA2E29;
+  --color-info: #1E5CF1;
+
+  /* Color: gradients */
+  --gradient-brand: linear-gradient(90deg, #E51263 0%, #A83DEA 50%, #32CEFF 100%);
+  --gradient-soft: linear-gradient(90deg, #FBD3E3 0%, #EAD1FA 50%, #9EE8FF 100%);
+
+  /* Typography: family */
+  --font-sans: "TT Interfaces", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Typography: scale (desktop). Pattern: --text-{token}-{size|line|weight|tracking} */
+  --text-display-size: 80px; --text-display-line: 88px; --text-display-weight: 500; --text-display-tracking: -2px;
+  --text-h1-size: 64px;      --text-h1-line: 72px;      --text-h1-weight: 500;      --text-h1-tracking: -2px;
+  --text-h2-size: 40px;      --text-h2-line: 48px;      --text-h2-weight: 500;      --text-h2-tracking: -1px;
+  --text-h3-size: 32px;      --text-h3-line: 40px;      --text-h3-weight: 500;      --text-h3-tracking: 0;
+  --text-h4-size: 24px;      --text-h4-line: 32px;      --text-h4-weight: 700;      --text-h4-tracking: 0;
+  --text-body-lg-size: 20px; --text-body-lg-line: 28px; --text-body-lg-weight: 500; --text-body-lg-tracking: 0;
+  --text-body-md-size: 16px; --text-body-md-line: 24px; --text-body-md-weight: 400; --text-body-md-tracking: 0;
+  --text-body-sm-size: 14px; --text-body-sm-line: 20px; --text-body-sm-weight: 400; --text-body-sm-tracking: 0;
+  --text-caption-size: 12px; --text-caption-line: 16px; --text-caption-weight: 500; --text-caption-tracking: 0;
+
+  /* Spacing */
+  --space-4: 4px;   --space-8: 8px;   --space-12: 12px; --space-16: 16px; --space-24: 24px;
+  --space-32: 32px; --space-40: 40px; --space-48: 48px; --space-64: 64px; --space-80: 80px;
+
+  /* Radii */
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 12px;
+  --radius-xl: 20px; --radius-2xl: 32px; --radius-full: 9999px;
+}
+
+[data-theme="dark"] {
+  --color-link: #A83DEA;
+  --color-bg: #0F0F10;
+  --color-surface: #232326;
+  --color-surface-warm: #232326;
+  --color-inverse-bg: #FFFFFF;
+  --color-inverse-text: #0F0F10;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A0A3A5;
+  --color-text-tertiary: #717578;
+  --color-border: #37383A;
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive type (below 768px), design.md §1.4 */
+@media (max-width: 767px) {
+  :root {
+    --text-display-size: 44px; --text-display-line: 48px;
+    --text-h1-size: 40px;      --text-h1-line: 48px;      --text-h1-tracking: -1px;
+    --text-h2-size: 32px;      --text-h2-line: 40px;
+    --text-h3-size: 24px;      --text-h3-line: 32px;
+    --text-h4-size: 20px;      --text-h4-line: 28px;
+  }
+}
+
+/* Container, design.md §3.1 */
+.container { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: var(--space-12); }
+@media (min-width: 768px)  { .container { padding-inline: var(--space-24); } }
+@media (min-width: 1280px) { .container { padding-inline: var(--space-32); } }
