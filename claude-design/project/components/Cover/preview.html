@@ -1,0 +1,36 @@
+<!-- @dsCard height=360 -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+html,body{margin:0;height:360px;overflow:hidden}
+body{background:var(--color-bg);position:relative;width:960px;font-family:var(--font-sans)}
+svg{position:absolute;left:0;top:0}
+.text{position:absolute;left:32px;bottom:32px;width:440px}
+.name{margin:0;font-size:120px;line-height:.95;font-weight:500;letter-spacing:-2px;color:var(--color-text-primary)}
+.tag{margin:14px 0 0;font-size:13px;line-height:20px;color:var(--color-text-secondary)}
+.p6{fill:var(--purple-600)}.p5{fill:var(--purple-500)}.p8{fill:var(--purple-800)}
+.i8{fill:var(--ink-800)}.sd{fill:var(--sand-100)}
+.xl{rx:var(--radius-xl);ry:var(--radius-xl)}
+.pill{rx:20px;ry:20px}
+</style></head><body>
+<svg width="960" height="360" viewBox="0 0 960 360" aria-hidden="true">
+<!-- blocks: purple-600 240x192, ink-800 176x112, purple-500 176x184, sand-100 240x112 (spacing 8-multiples), unequal slabs staggered right of x=480
+     arrangement: two columns of stacked slabs, left wider, bleeding to a 24px margin
+     pattern: Button pills (radius-full, 40 high) each with a trailing icon-wrapper disc, from the "pill-shaped controls with circular icon wrappers" in the README; one oversized disc
+     steps/radii: radius-xl 20 on blocks, radius-full pills = half of 40, disc r12 = 24px wrapper -->
+<rect class="p6 xl" x="504" y="24" width="240" height="192"/>
+<rect class="i8 xl" x="760" y="24" width="176" height="112"/>
+<rect class="p5 xl" x="760" y="152" width="176" height="184"/>
+<rect class="sd xl" x="504" y="232" width="240" height="112"/>
+<rect class="sd pill" x="520" y="40" width="208" height="40"/><circle class="i8" cx="708" cy="60" r="12"/>
+<rect class="p8 pill" x="520" y="88" width="160" height="40"/><circle class="sd" cx="660" cy="108" r="12"/>
+<rect class="i8 pill" x="520" y="136" width="112" height="40"/><circle class="p5" cx="612" cy="156" r="12"/>
+<rect class="p6 pill" x="776" y="40" width="144" height="40"/><circle class="sd" cx="900" cy="60" r="12"/>
+<rect class="p5 pill" x="776" y="88" width="96" height="40"/><circle class="i8" cx="852" cy="108" r="12"/>
+<rect class="i8 pill" x="776" y="168" width="144" height="40"/><circle class="sd" cx="900" cy="188" r="12"/>
+<circle class="p8" cx="848" cy="288" r="48"/>
+<rect class="p6 pill" x="520" y="248" width="144" height="40"/><circle class="sd" cx="644" cy="268" r="12"/>
+<rect class="i8 pill" x="520" y="296" width="96" height="40"/><circle class="sd" cx="596" cy="316" r="12"/>
+</svg>
+<div class="text"><p class="name">Devox<br>Design</p><p class="tag">One typeface, purple on neutral, pills and flat surfaces.</p></div>
+</body></html>

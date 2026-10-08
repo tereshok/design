@@ -1,0 +1,58 @@
+<!-- @dsCard group="Layout" height=1180 subtitle="Stacked, Split, Offset and Centered" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--color-bg);color:var(--color-text-primary);font:400 16px/24px var(--font-sans);padding:var(--space-24);display:flex;flex-direction:column;gap:var(--space-64)}
+.sh{display:flex;flex-direction:column;gap:var(--space-32)}
+.eyebrow{display:flex;align-items:center;gap:var(--space-4);padding-bottom:var(--space-32);box-shadow:inset 0 -1px 0 var(--color-border)}
+.dotbox{width:16px;height:16px;display:flex;align-items:center;justify-content:center}
+.dotbox i{width:4px;height:4px;border-radius:50%;background:var(--color-text-primary)}
+.eyebrow b{font:700 14px/20px var(--font-sans)}
+.tg{display:flex;flex-direction:column;gap:var(--space-24);max-width:720px;min-width:0}
+.h1{margin:0;font:500 64px/72px var(--font-sans);letter-spacing:-2px;text-wrap:balance}
+.sub{margin:0;font:500 20px/28px var(--font-sans);color:var(--color-text-secondary)}
+.tag{font:500 12px/16px var(--font-sans);color:var(--color-primary)}
+.split{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--space-24)}
+.split .sub{max-width:360px}
+.offset{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--space-24)}
+.offset .content{grid-column:5 / span 8;display:flex;flex-direction:column;gap:var(--space-32);align-items:flex-start}
+.lead{margin:0;font:500 20px/28px var(--font-sans);max-width:720px}
+.para{margin:0;font:400 16px/24px var(--font-sans);color:var(--color-text-secondary)}
+.centered{align-items:center;text-align:center}
+.centered .tg{align-items:center}
+.btn{display:inline-flex;align-items:center;padding:var(--space-12);border:0;border-radius:var(--radius-full);font:700 16px/24px var(--font-sans);cursor:pointer}
+.btn .l{padding:0 var(--space-12)}
+.btn .ic{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-full);font:400 14px/1 Inter,var(--font-sans)}
+.p{background:var(--color-primary);color:var(--color-on-primary)}.p .ic{background:var(--white);color:var(--ink-950)}
+.o{background:none;box-shadow:inset 0 0 0 1px var(--color-border);color:var(--color-text-primary)}.o .ic{background:var(--color-inverse-bg);color:var(--color-inverse-text)}
+.btn:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}
+@media (max-width:767px){.h1{font:500 40px/48px var(--font-sans);letter-spacing:-1px}.split{flex-direction:column;align-items:stretch}.offset .content{grid-column:1 / -1}}
+</style></head><body>
+
+<div class="sh">
+  <div class="eyebrow"><span class="dotbox"><i></i></span><b>Services We Provide</b></div>
+  <div class="tg"><h2 class="h1">Custom Software Solutions We Provide</h2><p class="sub">We help businesses modernize legacy systems and build and ship new products with dedicated engineering teams.</p></div>
+  <span class="tag">SectionHeader/Stacked</span>
+</div>
+
+<div class="sh">
+  <div class="eyebrow"><span class="dotbox"><i></i></span><b>Our Cases</b></div>
+  <div class="split"><div class="tg"><h2 class="h1">Products we have shipped</h2></div><button class="btn o"><span class="l">All cases</span><span class="ic">→</span></button></div>
+  <span class="tag">SectionHeader/Split</span>
+</div>
+
+<div class="sh">
+  <div class="eyebrow"><span class="dotbox"><i></i></span><b>About Us</b></div>
+  <h2 class="h1" style="max-width:none">Engineering teams that stay</h2>
+  <div class="offset"><div class="content"><p class="lead">We build long-term teams around your product, not short-term headcount.</p><p class="para">Engineers, QA, design and delivery managers work as one unit with your own people.</p><button class="btn p"><span class="l">Get consultation</span><span class="ic">→</span></button></div></div>
+  <span class="tag">SectionHeader/Offset · 4/12 empty offset, 8/12 content</span>
+</div>
+
+<div class="sh centered">
+  <div class="tg"><h2 class="h1">Ready to build something?</h2><p class="sub">Tell us about your project and we reply within one working day.</p></div>
+  <button class="btn p"><span class="l">Get consultation</span><span class="ic">→</span></button>
+  <span class="tag">SectionHeader/Centered · hero and closing CTA only</span>
+</div>
+</body></html>

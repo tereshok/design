@@ -1,0 +1,42 @@
+<!-- @dsCard group="Content" height=900 subtitle="Base, Compact, Large, Outline, Soft and Person" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--color-bg);color:var(--color-text-primary);font:400 16px/24px var(--font-sans);padding:var(--space-24)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-24);align-items:stretch}
+.card{display:flex;flex-direction:column;gap:var(--space-16);padding:var(--space-32);background:var(--color-surface);border-radius:var(--radius-lg);box-shadow:inset 0 0 0 1px var(--color-border-subtle);min-width:0}
+.compact{padding:var(--space-24)}
+.large{padding:var(--space-40)}
+.outline{background:transparent;box-shadow:inset 0 0 0 1px var(--color-border)}
+.soft{background:var(--gradient-soft);box-shadow:none;color:var(--ink-950)}
+.person{background:var(--color-surface-warm);padding:var(--space-24);box-shadow:none}
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.idx{font:500 40px/48px var(--font-sans);letter-spacing:-1px;color:var(--color-text-tertiary)}
+.soft .idx{color:var(--ink-600)}
+.iw{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--radius-full);background:var(--color-inverse-bg);color:var(--color-inverse-text);font:400 20px/1 Inter,var(--font-sans)}
+.title{margin:0;font:700 24px/32px var(--font-sans);color:var(--color-text-primary)}
+.soft .title{color:var(--ink-950)}
+.body{margin:0;font:400 16px/24px var(--font-sans);color:var(--color-text-secondary)}
+.soft .body{color:var(--ink-950)}
+.avatar{width:96px;height:96px;border-radius:var(--radius-full);background:var(--ink-200)}
+.role{margin:0;font:400 14px/20px var(--font-sans);color:var(--color-text-secondary)}
+.ghost{align-self:flex-start;display:inline-flex;align-items:center;padding:var(--space-12);border:0;background:none;border-radius:var(--radius-full);font:700 16px/24px var(--font-sans);color:var(--color-link);cursor:pointer}
+.ghost:hover{color:var(--color-primary-hover)}
+.ghost:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px}
+.ghost span.l{padding:0 var(--space-12)}
+.ghost span.ic{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:var(--radius-full);background:var(--color-primary);color:var(--white);font:400 14px/1 Inter,var(--font-sans)}
+.cap{font:500 12px/16px var(--font-sans);color:var(--color-primary)}
+.dark{margin-top:var(--space-24);padding:var(--space-24);background:var(--color-bg);border-radius:var(--radius-lg)}
+</style></head><body>
+<div class="grid">
+  <div class="card"><div class="top"><span class="idx">01</span><span class="iw">→</span></div><h3 class="title">Backend Development</h3><p class="body">Robust, scalable backend infrastructures that run fast and scale with your product.</p><button class="ghost"><span class="l">Learn more</span><span class="ic">→</span></button><span class="cap">Card/Base · padding 32</span></div>
+  <div class="card compact"><div class="top"><span class="idx">02</span><span class="iw">→</span></div><h3 class="title">Mobile Development</h3><p class="body">Native and cross-platform apps for iOS and Android.</p><span class="cap">Card/Compact · padding 24</span></div>
+  <div class="card large"><div class="top"><span class="idx">03</span><span class="iw">→</span></div><h3 class="title">Cloud and DevOps</h3><p class="body">Infrastructure, pipelines and monitoring that keep releases boring.</p><span class="cap">Card/Large · padding 40</span></div>
+  <div class="card outline"><div class="top"><span class="idx">01</span><span class="iw">→</span></div><h3 class="title">Backend Development</h3><p class="body">Robust, scalable backend infrastructures that run fast and scale with your product.</p><span class="cap">Card/Outline · padding 32</span></div>
+  <div class="card soft"><span class="idx">02</span><h3 class="title">Plan</h3><p class="body">Conducting a risk assessment and defining the project scope.</p><span class="cap" style="color:var(--ink-950)">Card/Soft · process / step cards only</span></div>
+  <div class="card person"><div class="avatar" role="img" aria-label="Avatar placeholder"></div><h3 class="title">Kostiantyn Gitko</h3><p class="role">CEO</p><span class="cap">Card/Person · warm surface, 1:1 avatar</span></div>
+</div>
+<div class="dark" data-theme="dark"><div class="grid"><div class="card"><div class="top"><span class="idx">01</span><span class="iw">→</span></div><h3 class="title">Backend Development</h3><p class="body">Same card in the dark theme.</p></div></div></div>
+</body></html>

@@ -1,0 +1,16 @@
+<!-- @dsCard group="Labels" height=200 subtitle="Eyebrow, Success, Warning, Error" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--color-bg);color:var(--color-text-primary);font:400 16px/24px var(--font-sans);padding:var(--space-24);display:flex;flex-direction:column;gap:var(--space-16)}
+.row{display:flex;flex-wrap:wrap;gap:var(--space-12);align-items:center}
+.badge{display:inline-flex;align-items:center;gap:var(--space-8);padding:var(--space-4) var(--space-12);border-radius:var(--radius-full);background:var(--color-surface);font:700 14px/20px var(--font-sans);color:var(--color-text-primary)}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--dot)}
+.e{--dot:var(--color-primary)}.s{--dot:var(--color-success)}.w{--dot:var(--color-warning)}.x{--dot:var(--color-error)}
+.dark{background:var(--color-bg);padding:var(--space-24);border-radius:var(--radius-lg)}
+</style></head><body>
+<div class="row"><span class="badge e"><i></i>Services We Provide</span><span class="badge s"><i></i>Success</span><span class="badge w"><i></i>Warning</span><span class="badge x"><i></i>Error</span></div>
+<div class="dark" data-theme="dark"><div class="row"><span class="badge e"><i></i>Services We Provide</span><span class="badge s"><i></i>Success</span><span class="badge w"><i></i>Warning</span><span class="badge x"><i></i>Error</span></div></div>
+</body></html>

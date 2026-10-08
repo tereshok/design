@@ -1,0 +1,87 @@
+<!-- @dsCard group="Actions" height=760 subtitle="Primary, Secondary, Outline, Ghost in sm, md, lg" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--color-bg);color:var(--color-text-primary);font:400 16px/24px var(--font-sans);padding:var(--space-24);display:flex;flex-direction:column;gap:var(--space-24)}
+.row{display:flex;flex-wrap:wrap;gap:var(--space-16);align-items:center}
+.cap{font:500 12px/16px var(--font-sans);color:var(--color-text-secondary);width:88px}
+.dark{background:var(--color-bg);padding:var(--space-24);border-radius:var(--radius-lg);display:flex;flex-direction:column;gap:var(--space-16)}
+.dark .cap{color:var(--color-text-secondary)}
+
+.btn{--p:var(--space-12);--lx:var(--space-12);--iw:24px;--ifs:14px;--fs:16px;--lh:24px;
+  display:inline-flex;align-items:center;justify-content:center;gap:0;padding:var(--p);border:0;background:none;
+  border-radius:var(--radius-full);font:700 var(--fs)/var(--lh) var(--font-sans);color:var(--color-text-primary);cursor:pointer;
+  transition:background-color .15s ease-out,opacity .15s ease-out,color .15s ease-out}
+.btn .label{padding:0 var(--lx);white-space:nowrap}
+.btn .ic{display:inline-flex;align-items:center;justify-content:center;width:var(--iw);height:var(--iw);border-radius:var(--radius-full);font:400 var(--ifs)/1 Inter,var(--font-sans)}
+
+.sm{--p:var(--space-8);--lx:var(--space-8);--fs:14px;--lh:20px}
+.lg{--p:var(--space-16);--lx:var(--space-16);--iw:32px;--ifs:18px}
+.btn:focus-visible,.btn.is-focus{outline:2px solid var(--color-primary);outline-offset:2px}
+
+.primary{background:var(--color-primary);color:var(--color-on-primary)}
+.primary .ic{background:var(--white);color:var(--ink-950)}
+.primary:hover,.primary.is-hover{background:var(--color-primary-hover)}
+.primary:active,.primary.is-pressed{background:var(--color-primary-pressed)}
+
+.secondary{background:var(--color-inverse-bg);color:var(--color-inverse-text)}
+.secondary .ic{background:var(--color-inverse-text);color:var(--color-inverse-bg)}
+.secondary:hover,.secondary.is-hover{opacity:.88}
+.secondary:active,.secondary.is-pressed{opacity:.8}
+
+.outline{box-shadow:inset 0 0 0 1px var(--color-border);color:var(--color-text-primary)}
+.outline .ic{background:var(--color-inverse-bg);color:var(--color-inverse-text)}
+.outline:hover,.outline.is-hover{background:var(--color-surface)}
+.outline:active,.outline.is-pressed{background:var(--color-surface);box-shadow:inset 0 0 0 1px var(--color-text-primary)}
+
+.ghost{color:var(--color-link)}
+.ghost .ic{background:var(--color-primary);color:var(--white)}
+.ghost:hover,.ghost.is-hover{color:var(--color-primary-hover)}
+.ghost:active,.ghost.is-pressed{color:var(--color-primary-pressed)}
+
+.btn:disabled,.btn.is-disabled{background:var(--ink-200);color:var(--color-text-tertiary);box-shadow:none;opacity:1;cursor:not-allowed}
+.btn:disabled .ic,.btn.is-disabled .ic{background:var(--white);color:var(--ink-200)}
+.dark .btn:disabled,.dark .btn.is-disabled{background:var(--ink-800)}
+
+.icon-only{padding:var(--p)}
+.icon-only .ic{background:none !important;color:inherit;font-size:20px}
+</style></head><body>
+
+<div class="row"><span class="cap">Primary</span>
+  <button class="btn primary sm"><span class="label">Get in touch</span><span class="ic">→</span></button>
+  <button class="btn primary md"><span class="label">Get consultation</span><span class="ic">→</span></button>
+  <button class="btn primary lg"><span class="label">Get consultation</span><span class="ic">→</span></button></div>
+<div class="row"><span class="cap">Secondary</span>
+  <button class="btn secondary sm"><span class="label">View cases</span><span class="ic">→</span></button>
+  <button class="btn secondary md"><span class="label">View cases</span><span class="ic">→</span></button>
+  <button class="btn secondary lg"><span class="label">View cases</span><span class="ic">→</span></button></div>
+<div class="row"><span class="cap">Outline</span>
+  <button class="btn outline sm"><span class="label">All services</span><span class="ic">→</span></button>
+  <button class="btn outline md"><span class="label">All services</span><span class="ic">→</span></button>
+  <button class="btn outline lg"><span class="label">All services</span><span class="ic">→</span></button></div>
+<div class="row"><span class="cap">Ghost</span>
+  <button class="btn ghost sm"><span class="label">Learn more</span><span class="ic">→</span></button>
+  <button class="btn ghost md"><span class="label">Learn more</span><span class="ic">→</span></button>
+  <button class="btn ghost lg"><span class="label">Learn more</span><span class="ic">→</span></button></div>
+
+<div class="row"><span class="cap">States (md)</span>
+  <button class="btn primary md"><span class="label">Default</span><span class="ic">→</span></button>
+  <button class="btn primary md is-hover"><span class="label">Hover</span><span class="ic">→</span></button>
+  <button class="btn primary md is-pressed"><span class="label">Pressed</span><span class="ic">→</span></button>
+  <button class="btn primary md is-focus"><span class="label">Focus</span><span class="ic">→</span></button>
+  <button class="btn primary md" disabled><span class="label">Disabled</span><span class="ic">→</span></button></div>
+<div class="row"><span class="cap">Icon-only</span>
+  <button class="btn outline md icon-only" aria-label="Previous"><span class="ic">←</span></button>
+  <button class="btn outline md icon-only" aria-label="Next"><span class="ic">→</span></button></div>
+
+<div class="dark" data-theme="dark">
+  <div class="row"><span class="cap">Dark theme</span>
+    <button class="btn primary md"><span class="label">Primary</span><span class="ic">→</span></button>
+    <button class="btn secondary md"><span class="label">Secondary</span><span class="ic">→</span></button>
+    <button class="btn outline md"><span class="label">Outline</span><span class="ic">→</span></button>
+    <button class="btn ghost md"><span class="label">Ghost</span><span class="ic">→</span></button>
+    <button class="btn primary md" disabled><span class="label">Disabled</span><span class="ic">→</span></button></div>
+</div>
+</body></html>

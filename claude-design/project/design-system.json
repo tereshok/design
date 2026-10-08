@@ -1,0 +1,37 @@
+{
+    "v":  3,
+    "assetGroups":  {
+
+                    },
+    "blobs":  {
+
+              },
+    "createdOnFiles":  {
+                           "at":  "2026-10-08T10:58:00Z",
+                           "v":  1
+                       },
+    "docs":  {
+                 "readme":  "project/README.md",
+                 "sections":  [
+
+                              ]
+             },
+    "groups":  [
+
+               ],
+    "lastChange":  {
+                       "by":  "Oleksandr Lukianets",
+                       "at":  "2026-10-08T11:13:17Z",
+                       "via":  "Claude Code · devox.pen",
+                       "note":  "Added live previews and guidelines for 9 components"
+                   },
+    "layout":  "files",
+    "libraries":  [
+
+                  ],
+    "namespace":  "DevoxDesign",
+    "sections":  {
+
+                 },
+    "title":  "Devox Design"
+}

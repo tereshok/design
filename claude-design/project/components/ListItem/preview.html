@@ -1,0 +1,25 @@
+<!-- @dsCard group="Content" height=380 subtitle="Bullet and Check markers" -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--color-bg);color:var(--color-text-primary);font:400 16px/24px var(--font-sans);padding:var(--space-24);display:flex;flex-direction:column;gap:var(--space-24)}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:var(--space-12);max-width:720px}
+li{display:flex;align-items:flex-start;gap:var(--space-12)}
+.mk{width:8px;height:24px;display:flex;align-items:center;justify-content:center;flex:none}
+.mk i{width:8px;height:8px;border-radius:50%;background:var(--color-primary)}
+.ck{width:24px;height:24px;border-radius:var(--radius-full);background:var(--color-primary);color:var(--white);display:flex;align-items:center;justify-content:center;flex:none;font:400 14px/1 Inter,var(--font-sans)}
+.cap{font:500 12px/16px var(--font-sans);color:var(--color-text-secondary)}
+.dark{background:var(--color-bg);padding:var(--space-24);border-radius:var(--radius-lg)}
+</style></head><body>
+<div><ul>
+  <li><span class="mk"><i></i></span><span>Slow hiring: access to ready engineering talent without lengthy recruitment cycles</span></li>
+  <li><span class="mk"><i></i></span><span>Rising costs: predictable monthly pricing for a full team</span></li>
+</ul><p class="cap">ListItem/Bullet</p></div>
+<div><ul>
+  <li><span class="ck">✓</span><span>Slow hiring: access to ready engineering talent without lengthy recruitment cycles</span></li>
+  <li><span class="ck">✓</span><span>Rising costs: predictable monthly pricing for a full team</span></li>
+</ul><p class="cap">ListItem/Check</p></div>
+<div class="dark" data-theme="dark"><ul><li><span class="ck">✓</span><span>Same list in the dark theme</span></li></ul></div>
+</body></html>
